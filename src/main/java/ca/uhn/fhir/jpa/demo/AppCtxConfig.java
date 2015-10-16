@@ -11,8 +11,10 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.JpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import ca.uhn.fhir.jpa.config.BaseJavaConfigDstu2;
@@ -79,6 +81,7 @@ public class AppCtxConfig extends BaseJavaConfigDstu2 {
 		extraProperties.put("hibernate.search.default.directory_provider", "filesystem");
 		extraProperties.put("hibernate.search.default.indexBase", "/var/lib/tomcat7/target/lucenefiles");
 		extraProperties.put("hibernate.search.lucene_version", "LUCENE_CURRENT");
+		extraProperties.put("hibernate.dialect", "org.hibernate.dialect.DerbyTenSevenDialect");
 		return extraProperties;
 	}
 

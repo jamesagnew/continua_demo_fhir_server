@@ -12,7 +12,7 @@
 	<bean class="ca.uhn.fhir.to.TesterConfig">
 		<property name="servers">
 			<list>
-				<value>home     , DSTU2 , Local Server                 , ${serverBase}/baseDstu2</value>
+				<value>home     , DSTU2 , Local Server                 , http://continua.cloudapp.net/baseDstu2</value>
 			</list>
 		</property>
 	</bean>
