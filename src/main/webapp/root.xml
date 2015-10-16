@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://hl7.org/schemas/hdata/2013/08/hrf">
+    <id>urn:uuid:ab443e5e-b6a7-e951-956c-caef491bbc08</id>
+    <version>2.0</version>
+    <created>2013-07-14T15:07:38.6875000-05:00</created>
+    <lastModified>2013-07-16T08:12:02.2832000-05:00</lastModified>
+
+    <!-- This is the capability exchange -->
+    <profile>
+        <id>CapabilityExchange</id>
+        <reference>http://continuaalliance.org/ccdc/2015/CapabilityExchange</reference>
+    </profile>
+
+    <!-- This is the capability for hData Observation upload -->
+    <profile>
+    <!-- Specified value -->
+        <id>observation-upload-hData</id>
+        <reference>http://www.continuaalliance.org/upload2013/01/H.812.1.pdf</reference>
+    </profile>
+	
+	<!-- This is the capability for hData Observation upload FHIR -->
+    <profile>
+    <!-- Specified value -->
+        <id>observation-upload-fhir</id>
+        <reference>http://www.continuaalliance.org/upload2013/01/H.812.1.pdf</reference>
+    </profile>
+
+    <!-- This is the Unsolicited capability for APS-CDC -->
+    <profile>
+        <id>APS-CDC-WAN</id>
+        <reference>http://www.continuaalliance.org/hData/APS/2013/01/H.810.2.4.pdf</reference>
+    </profile>
+
+    <!-- This is the Unsolicited capability for lampreynetworks.com.private -->
+    <profile>
+        <id>LNI</id>
+        <reference>http://lampreynetworks.com./hData/APS/2013/01/LNI Private APS.pdf</reference>
+    </profile>
+
+    <!-- This is the capability for oAuth authentication service -->
+    <profile>
+        <!-- Specified value -->
+        <id>oAUTH</id>
+        <reference>http://www.continuaalliance.org/upload2013/01/H.810.2.1.pdf</reference>
+    </profile>
+
+    <section>
+        <!-- chosen by the WAN service; empty on AHD -->
+        <path>oAUTH_Service</path>
+        <port>8441</port>
+        <profileID>oAUTH</profileID>
+        <resourceTypeID>oAUTH-Bearer</resourceTypeID>
+    </section>
+
+    <section>
+        <path>pcd01</path>
+        <port>8441</port>
+        <profileID>observation-upload-hData</profileID>
+        <resourceTypeID>observation</resourceTypeID>
+    </section>
+
+    <section>
+        <path>baseDstu2</path>
+        <port>80</port>
+        <profileID>observation-upload-fhir</profileID>
+        <resourceTypeID>observation</resourceTypeID>
+    </section>
+
+    <section>
+        <!-- This is where an AHD may post ITs root.xml file [baseURL/roots] -->
+        <path>roots</path>
+        <port>8441</port>
+        <profileID>CapabilityExchange</profileID>
+        <resourceTypeID>root</resourceTypeID>
+    </section>
+
+    <!-- The path the AHD would POST to establish an APS is then: baseurl/APS -->
+    <section>
+        <!-- chosen by the WAN server; where the AHD does a POST of its APB xml -->
+        <path>APS</path>
+        <port>8442</port>
+        <profileID>APS-CDC-WAN</profileID>
+        <!-- optional but recommended -->
+        <resourcePrefix>true</resourcePrefix>
+        <resourceTypeID>APB</resourceTypeID>
+    </section>
+
+    <!-- The path the AHD would POST to establish an APS is then: baseurl/APS -->
+    <section>
+        <!-- chosen by the WAN server; where the AHD does a POST of its APB xml -->
+        <path>APS</path>
+        <port>8442</port>
+        <profileID>LNI</profileID>
+        <!-- optional but recommended -->
+        <resourcePrefix>true</resourcePrefix>
+        <resourceTypeID>APB</resourceTypeID>
+    </section>
+
+    <resourceType>
+        <id>observation</id>
+        <!-- location of reference that describes the Observation upload standard -->
+        <reference>http://www.ihe.net/uploadedFiles/Documents/PCD/IHE_PCD_TF_Vol2.pdf</reference>
+        <representation>
+            <mediaType>application/txt</mediaType>
+            <!-- Schema for the resource -->
+        </representation>
+    </resourceType>
+
+    <resourceType>
+        <id>root</id>
+        <reference>http://www.hl7.org/implement/standards/product_brief.cfm?product_id=261</reference>
+        <representation>
+            <mediaType>application/xml</mediaType>
+            <validator>http://www.projecthdata.org/hdata/schemas/2013/root.xsd</validator>
+        </representation>
+    </resourceType>
+
+    <resourceType>
+        <id>APB</id>
+        <!-- location of reference that describes the APS standard -->
+        <reference>http://www.continuaalliance.org/hData/APS/2013/01/ITU APS Implementation Guidelines.docx</reference>
+        <representation>
+            <mediaType>application/xml</mediaType>
+            <!-- Schema for the APS xml -->
+            <validator>http://www.continuaalliance.org/hData/APS/2013/01/APBConfigResource.xsd</validator>
+        </representation>
+    </resourceType>
+
+    <resourceType>
+        <id>oAUTH-Bearer</id>
+        <!-- location of reference that describes the Observation upload standard -->
+        <reference>http://tools.ietf.org/html/rfc6750</reference>
+        <representation>
+           <mediaType>application/json</mediaType>
+        </representation>
+    </resourceType>
+
+</Root>
