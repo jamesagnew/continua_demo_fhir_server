@@ -15,6 +15,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			ca.uhn.fhir.jpa.demo.AppCtxConfig
+			ca.uhn.fhir.jpa.config.WebsocketDstu2Config
 		</param-value>
 	</context-param>
 

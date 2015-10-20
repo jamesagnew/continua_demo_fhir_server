@@ -91,7 +91,7 @@ public class JpaServerDemo extends RestfulServer {
 		setDefaultPrettyPrint(true);
 		setDefaultResponseEncoding(EncodingEnum.JSON);
 
-		setServerAddressStrategy(new HardcodedServerAddressStrategy("http://continua.cloudapp.net:8080/baseDstu2"));
+		setServerAddressStrategy(new HardcodedServerAddressStrategy("http://continua.cloudapp.net/baseDstu2"));
 		
 		/*
 		 * This is a simple paging strategy that keeps the last 10 searches in memory
