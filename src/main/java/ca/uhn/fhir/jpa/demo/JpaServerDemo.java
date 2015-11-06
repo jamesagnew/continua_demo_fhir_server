@@ -96,7 +96,9 @@ public class JpaServerDemo extends RestfulServer {
 		/*
 		 * This is a simple paging strategy that keeps the last 10 searches in memory
 		 */
-		setPagingProvider(new FifoMemoryPagingProvider(100));
+		FifoMemoryPagingProvider pagingProvider = new FifoMemoryPagingProvider(100);
+		pagingProvider.setMaximumPageSize(5000);
+		setPagingProvider(pagingProvider);
 
 		/*
 		 * Load interceptors for the server from Spring (these are defined in AppCtxConfig.java)
