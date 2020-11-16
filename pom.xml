@@ -152,7 +152,7 @@
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-webapp</artifactId>
 			<scope>test</scope>
-			<version>9.2.10.v20150310</version>
+			<version>9.4.34.v20201102</version>
 		</dependency>
 		<dependency>
 			<groupId>com.phloc</groupId>
